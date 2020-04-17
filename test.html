@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function addSum() {
+            let args = Array.prototype.slice.call(arguments);
+            var inadd = function () {
+                args.push(...arguments);
+                return inadd;
+            }
+            inadd.toString = function () {
+                return args.reduce(function (a, b) {
+                    return a + b;
+                })
+            }
+            return inadd;
+        }
+        let x = addSum(1, 2);
+        console.log(x)
+        console.log(x(3))
+        console.log(x(8))
+    </script>
+</body>
+
+</html>
